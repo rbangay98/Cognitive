@@ -19,5 +19,10 @@ with open('b.csv', newline='') as csvfileb:
 
 t = np.linspace(0, 1, 160000)
 y = np.sin(50*2*np.pi*t) + 0.5*np.sin(100*2*np.pi*t)+0.25*np.sin(150*2*np.pi*t) + 0.125*np.sin(200*2*np.pi*t) + 0.1*np.sin(2*np.pi*20000*t)
-plt.plot(t,y)
-plt.show()
+
+##print(a,b)
+
+yf = signal.filtfilt(b,a,t)
+##
+##plt.plot(t,y)
+##plt.show()
