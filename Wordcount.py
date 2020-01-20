@@ -93,7 +93,7 @@ def run(argv=None, save_main_session=True):
 
     # Read the text file[pattern] into a PCollection.
     lines = p | ReadFromText(known_args.input)
-
+    print(type(lines))
     # Count the occurrences of each word.
     counts = (
         lines
