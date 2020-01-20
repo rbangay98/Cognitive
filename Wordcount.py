@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-"""A word-counting workflow."""
+"""A minimalist word-counting workflow that counts words in Shakespeare.
 This is the first in a series of successively more detailed 'word count'
 examples.
 Next, see the wordcount pipeline, then the wordcount_debugging pipeline, for
