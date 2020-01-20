@@ -51,6 +51,7 @@ import apache_beam as beam
 from apache_beam.io import ReadFromText
 from apache_beam.io import WriteToText
 from apache_beam.options.pipeline_options import PipelineOptions
+from apache_beam.io.gcp.datastore.v1new.datastoreio import ReadFromDatastore
 from apache_beam.options.pipeline_options import SetupOptions
 
 
@@ -92,8 +93,8 @@ def run(argv=None, save_main_session=True):
   with beam.Pipeline(options=pipeline_options) as p:
 
     # Read the text file[pattern] into a PCollection.
-    lines = p | ReadFromText(known_args.input)
-    type = type(lines)
+    lines = p | ReadFromDatastore(known_args.input)
+    types = type(lines)
     # Count the occurrences of each word.
     counts = (
         lines
@@ -105,7 +106,7 @@ def run(argv=None, save_main_session=True):
     # Format the counts into a PCollection of strings.
     def format_result(word_count):
       (word, count) = word_count
-      return '%s: %s, %s' % (word, count, type)
+      return '%s: %s, %s' % (word, count, types)
 
     output = counts | 'Format' >> beam.Map(format_result)
 
