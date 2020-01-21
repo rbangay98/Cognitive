@@ -183,7 +183,7 @@ def read_from_datastore(user_options, pipeline_options):
   # Count the occurrences of each word.
   def count_ones(word_ones):
     (word, ones) = word_ones
-    return (word, sum(ones))
+    return word, sum(ones)
 
   counts = (lines
             | 'split' >> (beam.ParDo(WordExtractingDoFn())
